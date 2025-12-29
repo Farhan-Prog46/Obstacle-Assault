@@ -16,7 +16,7 @@ void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Display, TEXT("MovingPlatform Begins"));
+	StartLocation = GetActorLocation();
 	
 }
 
@@ -25,8 +25,9 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	FVector CurrentLocation = GetActorLocation();
-	CurrentLocation.X = CurrentLocation.X + (100 * DeltaTime);
+	CurrentLocation = CurrentLocation + (PlatformVelocity * DeltaTime);
 	SetActorLocation(CurrentLocation);
 
+	double TraveledDistance = FVector::Dist(StartLocation, CurrentLocation);
 }
 
