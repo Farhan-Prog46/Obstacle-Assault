@@ -16,7 +16,7 @@ void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Display, TEXT("MovingPlatform Begings"));
+	UE_LOG(LogTemp, Display, TEXT("MovingPlatform Begins"));
 	
 }
 
@@ -24,6 +24,9 @@ void AMovingPlatform::BeginPlay()
 void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	FVector CurrentLocation = GetActorLocation();
+	CurrentLocation.X = CurrentLocation.X + (100 * DeltaTime);
+	SetActorLocation(CurrentLocation);
 
 }
 
